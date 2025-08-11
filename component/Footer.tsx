@@ -37,9 +37,13 @@ const Footer: React.FC = () => {
               <h4 className="text-white font-medium mb-3">Supported currencies</h4>
               <div className="flex flex-wrap gap-2">
                 {
-                  coins.map((item) => <div className="flex items-center justify-center">
-                    <img src={"/icons/coin-icon/" + item + '.svg'} className="w-8 h-8" alt="coin" />
-                  </div>)
+                  coins.map((item, index) => 
+                    (
+                      <div key={index} className="flex items-center justify-center">
+                        <img src={"/icons/coin-icon/" + item + '.svg'} className="w-8 h-8" alt="coin" />
+                      </div>
+                    )
+                  )
                 }
               </div>
             </div>
@@ -172,7 +176,7 @@ const Footer: React.FC = () => {
             <h4 className="text-white w-full font-medium mb-3">Supported currencies</h4>
             <div className="flex justify-between items-center lg:gap-2 ">
               {
-                coins.map((item) => <div className="flex items-center justify-center">
+                coins.map((item, index) => <div key={index} className="flex items-center justify-center">
                   <img src={"/icons/coin-icon/" + item + '.svg'} className="w-8 h-8" alt="coin" />
                 </div>)
               }
