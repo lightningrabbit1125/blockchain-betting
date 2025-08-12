@@ -24,3 +24,17 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+.sidebar {
+  scrollbar-color: #2a3546 rgba(13, 19, 28, .8);
+  scrollbar-width: thin;
+}
+
+.sidevar.open {
+  width: 300px;
+  min-width: 300px;
+}
+
+.main-content {
+  width: 100%;
+}
