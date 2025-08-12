@@ -7,7 +7,7 @@ const Sidebar: React.FC = () => {
 
     return (
         <aside
-            className={`sticky h-14 bg-gray-800 absolute  lg:md:block transition-all duration-300 z-40 overflow-y-auto ${isCollapsed ? 'lg:w-20 w-0' : 'w-74'
+            className={`sidebar sticky h-14 bg-gray-800 absolute  lg:md:block transition-all duration-300 z-40 overflow-y-auto ${isCollapsed ? 'open' : 'close'
                 }`}
             style={{
                 background: "#1a2332",
