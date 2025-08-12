@@ -33,9 +33,13 @@ export default function RootLayout({
       >
         <SidebarProvider>
           <Header />
-          <Sidebar />
-          {children}
-          <Footer />
+          <main className="flex pt-14 relative">
+            <Sidebar />
+            <div className="main-content">
+              {children}
+              <Footer />
+            </div>
+          </main>
         </SidebarProvider>
       </body>
     </html>

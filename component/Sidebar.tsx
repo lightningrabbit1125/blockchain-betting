@@ -7,12 +7,13 @@ const Sidebar: React.FC = () => {
 
     return (
         <aside
-            className={` bg-gray-800 absolute  lg:relative md:block transition-all duration-300 z-40 overflow-y-auto ${isCollapsed ? 'lg:w-20 w-0' : 'w-74'
+            className={`sticky h-14 bg-gray-800 absolute  lg:md:block transition-all duration-300 z-40 overflow-y-auto ${isCollapsed ? 'lg:w-20 w-0' : 'w-74'
                 }`}
             style={{
                 background: "#1a2332",
                 borderRight: "1px solid #2d3748",
-                marginTop: "56px"
+                height: "calc(100vh - 56px)",
+                top: "56px"
             }}
         >
             <div className="flex flex-col h-full">
