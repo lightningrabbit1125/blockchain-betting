@@ -12,7 +12,7 @@ const Sidebar: React.FC = () => {
             style={{
                 background: "#1a2332",
                 borderRight: "1px solid #2d3748",
-                height: "calc(100vh - 56px)",
+                height: "calc(100vh - 56px)", 
                 top: "56px"
             }}
         >
