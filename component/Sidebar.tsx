@@ -7,8 +7,7 @@ const Sidebar: React.FC = () => {
 
     return (
         <aside
-            className={`sidebar sticky h-14 bg-gray-800 absolute  lg:md:block transition-all duration-300 z-40 overflow-y-auto ${isCollapsed ? 'open' : 'close'
-                }`}
+            className={`sidebar sticky h-14 bg-gray-800 absolute  lg:md:block transition-all duration-300 z-40 overflow-y-auto ${isCollapsed ? 'close' : 'open' }`}
             style={{
                 background: "#1a2332",
                 borderRight: "1px solid #2d3748",
@@ -17,7 +16,6 @@ const Sidebar: React.FC = () => {
             }}
         >
             <div className="flex flex-col h-full">
-                {/* Top Section - Casino/Sport buttons */}
                 <div className={`p-4 ${isCollapsed ? 'px-2' : ''}`}>
                     <div className={`flex gap-2 ${isCollapsed ? 'flex-col' : ''}`}>
                         <button

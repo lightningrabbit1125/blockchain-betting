@@ -30,7 +30,7 @@ body {
   scrollbar-width: thin;
 }
 
-.sidevar.open {
+.sidebar.open {
   width: 300px;
   min-width: 300px;
 }
