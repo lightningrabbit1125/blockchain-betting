@@ -4,7 +4,7 @@ import React from "react"
 
 import GmailIcon from "./GmailIcon"
 import TelegramIcon from "./TelegramIcon"
-import MetaMaskIcon from "./MetaMaskIcon"
+import MetaMaskIcon from "./MetamaskIcon"
 import TrustpilotIcon from "./TrustpilotIcon"
 import TONIcon from "./TONIcon"
 
