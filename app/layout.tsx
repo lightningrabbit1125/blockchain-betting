@@ -6,6 +6,8 @@ import { SidebarProvider } from "@/component/providers/SidebarProvider";
 import Footer from "@/component/Footer";
 import Sidebar from "@/component/Sidebar";
 import Auth from "@/component/auth/Auth";
+import MainContent from "@/component/MainConent";
+import Bottombar from "@/component/Bottombar";
 
 const montserrat = Montserrat({
   subsets: ['latin'], // Specify the character subsets you need
@@ -44,10 +46,12 @@ export default function RootLayout({
           <main className="flex pt-14 relative">
             <Sidebar />
             <div className="main-content">
+              <MainContent />
               {children}
               <Footer />
             </div>
           </main>
+          <Bottombar />
         </SidebarProvider>
       </body>
     </html>
