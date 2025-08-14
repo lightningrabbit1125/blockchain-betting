@@ -17,6 +17,7 @@ export const useSidebar = () => {
   return context;
 };
 
+
 interface SidebarProviderProps {
   children: React.ReactNode;
 }
