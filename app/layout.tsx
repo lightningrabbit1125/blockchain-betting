@@ -1,28 +1,18 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Montserrat } from "next/font/google";
+import { Montserrat } from "next/font/google";
 import "./globals.css";
-import Header from "@/component/Header";
-import { SidebarProvider } from "@/component/providers/SidebarProvider";
-import Footer from "@/component/Footer";
-import Sidebar from "@/component/Sidebar";
-import Auth from "@/component/auth/Auth";
-import MainContent from "@/component/MainConent";
-import Bottombar from "@/component/Bottombar";
+import Header from "@/components/organisms/Header";
+import { SidebarProvider } from "@/components/providers/SidebarProvider";
+import Footer from "@/components/organisms/Footer";
+import Sidebar from "@/components/organisms/Sidebar";
+import Auth from "@/components/organisms/auth/Auth";
+import MainContent from "@/components/organisms/MainContent";
+import Bottombar from "@/components/organisms/Bottombar";
 
 const montserrat = Montserrat({
-  subsets: ['latin'], // Specify the character subsets you need
-  weight: ['400', '700'], // Define the weights you want to use
-  variable: '--font-montserrat', // Optional: Define a CSS variable for easier use with Tailwind CSS
-});
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+  subsets: ["latin"], // Specify the character subsets you need
+  weight: ["400", "700"], // Define the weights you want to use
+  variable: "--font-montserrat", // Optional: Define a CSS variable for easier use with Tailwind CSS
 });
 
 export const metadata: Metadata = {
@@ -37,9 +27,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${montserrat.className}  antialiased`}
-      >
+      <body className={`${montserrat.className}  antialiased`}>
         <SidebarProvider>
           {/* <Auth /> */}
           <Header />

@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { useSidebar } from "@/component/providers/SidebarProvider";
+import { useSidebar } from "../providers/SidebarProvider";
 
 interface BottombarProps {
   onMenuClick?: () => void;

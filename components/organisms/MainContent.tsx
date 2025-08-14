@@ -1,8 +1,8 @@
 "use client";
 
 import React, { useEffect, useRef, useState } from "react";
-import mainContentData from "../main-content-data.json";
-import { useSidebar } from "./providers/SidebarProvider";
+import mainContentData from "../../main-content-data.json";
+import { useSidebar } from "../providers/SidebarProvider";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Swiper as SwiperType } from "swiper";
 import "swiper/css";
@@ -12,12 +12,12 @@ import { Autoplay, Navigation, Pagination } from "swiper/modules";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
-import CasinoCard from "./cards/CasinoCard";
-import RewardCard from "./cards/RewardCard";
-import HashCard from "./cards/HashCard";
-import FutureCard from "./cards/FutureCard";
-import GameCard from "./cards/GameCard";
-import Button from "./buttons/Button";
+import CasinoCard from "../molecules/cards/CasinoCard";
+import RewardCard from "../molecules/cards/RewardCard";
+import HashCard from "../molecules/cards/HashCard";
+import FutureCard from "../molecules/cards/FutureCard";
+import GameCard from "../molecules/cards/GameCard";
+import { Button } from "../../ui/atoms";
 import { Icon } from "@iconify/react";
 import Auth from "./auth/Auth";
 

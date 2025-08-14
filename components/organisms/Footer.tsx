@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import BlackButton from "./buttons/black";
+import { BlackButton } from "../../ui/atoms";
 import Link from "next/link";
 
 const coins = [
@@ -232,7 +232,6 @@ const Footer: React.FC = () => {
             </h4>
             <div className="flex justify-between items-center lg:gap-2 ">
               {coins.map((item, index) => (
-
                 <div key={index} className="flex items-center justify-center">
                   <img
                     src={"/icons/coin-icon/" + item + ".svg"}

@@ -3,7 +3,7 @@
 // this is the first carousel card
 
 import React, { useState, useEffect, useRef } from "react";
-import Button from "../buttons/Button";
+import { Button } from "../../../ui/atoms";
 
 interface TypeOneProps {
   title:

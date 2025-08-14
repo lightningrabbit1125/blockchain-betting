@@ -1,10 +1,8 @@
 "use client";
 
 import React from "react";
-import BlackButton from "./buttons/black";
-import Button, { BlueButton } from "./buttons/Button";
-import { useSidebar } from "./providers/SidebarProvider";
-import router from "next/router";
+import { BlackButton, Button } from "../../ui/atoms";
+import { useSidebar } from "../providers/SidebarProvider";
 import Auth from "./auth/Auth";
 const Header: React.FC = () => {
   const { toggleSidebar, toggleAuthModal } = useSidebar();

@@ -4,7 +4,7 @@
 
 import React from "react";
 import { Copy, Info, ArrowLeftRight } from "lucide-react";
-import Button from "../buttons/Button";
+import { Button } from "../../../ui/atoms";
 export interface TypeTwoProps {
   title: string;
   chances: string;

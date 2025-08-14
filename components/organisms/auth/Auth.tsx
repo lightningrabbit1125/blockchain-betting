@@ -4,9 +4,9 @@ import React, { useState } from "react";
 
 import LoginForm from "./LoginForm";
 import RegisterForm from "./RegisterForm";
-import Icons from "../icons/icons";
-import { useSidebar } from "../providers/SidebarProvider";
-import BlackButton from "../buttons/black";
+import { Icons } from "../../../ui/atoms";
+import { useSidebar } from "../../providers/SidebarProvider";
+import { BlackButton } from "../../../ui/atoms";
 
 const icons = ["Gmail", "Telegram", "MetaMask", "TON", "Trustpilot"];
 

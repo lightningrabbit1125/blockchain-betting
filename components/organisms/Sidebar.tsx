@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { useSidebar } from "./providers/SidebarProvider";
+import { useSidebar } from "../providers/SidebarProvider";
 const Sidebar: React.FC = () => {
   const { isCollapsed } = useSidebar();
 
