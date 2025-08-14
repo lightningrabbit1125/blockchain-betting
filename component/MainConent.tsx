@@ -214,14 +214,13 @@ const MainContent: React.FC = () => {
 
   return (
     <div
-      className={`px-6 py-12  2xl:w-[calc(100vw-296px)] lg:w-[calc(100vw-80px)] bg-[#1e2939a6] overflow-x-hidden margin auto  ${
+      className={`px-6 py-12  w-full bg-[111923] overflow-x-hidden margin auto  ${
         isCollapsed
           ? "xl:w-[calc(100vw-80px)]"
           : "xl:w-[calc(100vw-315px)] 2xl:w-[calc(100vw-315px)]"
       }`}
       style={{ margin: "auto" }}
     >
-      Promotional Banners
       <div className="mb-12">
         <Swiper
           modules={[Autoplay, Pagination]}
@@ -687,17 +686,20 @@ const MainContent: React.FC = () => {
           </Swiper>
         </div>
       </div>
-      <div className="grid grid-cols-6 lg:px-8 px-[6px]">
+      <h2 className="text-4.5 font-bold text-white mb-4 flex gap-2">
+        Latest Bets
+      </h2>
+      <div className="grid lg:md:grid-cols-[15%_15%_20%_15%_25%_10%] grid-cols-[20%_20%_20%_40%] gap-[6px] lg:px-8 px-[6px]">
         <div className="text-left text-[12px] font-bold py-2 text-white">
           Game
         </div>
         <div className="text-left text-[12px] font-bold py-2 text-white">
           Player
         </div>
-        <div className="text-left text-[12px] font-bold py-2 text-white">
+        <div className="text-left text-[12px] hidden md:lg:block font-bold py-2 text-white">
           Time
         </div>
-        <div className="text-left text-[12px] font-bold py-2 truncate text-white">
+        <div className="text-left text-[12px] hidden md:lg:block font-bold py-2 truncate text-white">
           Bet Amount
         </div>
         <div className="text-left text-[12px] font-bold py-2 text-white">
@@ -725,32 +727,28 @@ const MainContent: React.FC = () => {
             <SwiperSlide key={index}>
               <div
                 key={index}
-                className="bg-[#1C2532] lg:px-8 px-[6px] w-full grid grid-cols-6 rounded-[16px] h-[48px] overflow-hidden mb-[6px]"
+                className="bg-[#1C2532] lg:px-8 gap-[6px] px-[6px] w-full grid lg:md:grid-cols-[15%_15%_20%_15%_25%_10%] grid-cols-[20%_20%_20%_40%] rounded-[16px] h-[48px] overflow-hidden mb-[6px]"
               >
                 <div className="text-white flex text-[12px] font-bold truncate  items-center gap-2">
-                  <div className="rounded-[8px] overflow-hidden w-6 hi6">
-                    <img
-                      src="/images/gameLogo.png"
-                      alt="game"
-                      className="w-full h-full"
-                    />
-                  </div>
+                  <img
+                    src="/images/gameLogo.png"
+                    alt="game"
+                    className="w-6 h-6"
+                  />
                   {bet.game}
                 </div>
                 <div className=" text-gray-300 text-[12px] font-bold truncate  flex items-center gap-2">
-                  <div className="rounded-[8px] overflow-hidden w-6 hi6">
-                    <img
-                      src="/images/avatar(1).png"
-                      alt="avatar"
-                      className="w-full h-full"
-                    />
-                  </div>
+                  <img
+                    src="/images/avatar(1).png"
+                    alt="avatar"
+                    className="w-6 h-6 hidden md:lg:block"
+                  />
                   {bet.player}
                 </div>
-                <div className=" text-gray-300 text-[12px] font-bold truncate  flex items-center">
+                <div className=" text-gray-300 text-[12px] hidden md:lg:block font-bold truncate  flex items-center">
                   {bet.time}
                 </div>
-                <div className=" text-gray-300 text-[12px] font-bold truncate  flex items-center gap-2">
+                <div className=" text-gray-300 text-[12px] hidden md:lg:block font-bold truncate  flex items-center gap-2">
                   <div className="rounded-[8px] overflow-hidden w-6 hi6">
                     <img
                       src="/icons/coin-icon/BTC.svg"
@@ -765,7 +763,7 @@ const MainContent: React.FC = () => {
                 </div>
                 <div className=" text-green-400 text-[12px] font-bold truncate  flex items-center gap-2">
                   {bet.payout}
-                  <div className="rounded-[8px] overflow-hidden w-6 hi6">
+                  <div className="rounded-[8px] overflow-hidden !w-6 !h-6">
                     <img
                       src="/icons/coin-icon/BTC.svg"
                       alt="coin"
@@ -777,28 +775,33 @@ const MainContent: React.FC = () => {
             </SwiperSlide>
           ))}
         </Swiper>
-        <div className="absolute bottom-0 left-0 w-full h-[254px] bg-gradient-to-b z-30 from-[#0d131c00] to-[#0d131c] pointer-events-none"></div>
+        <div className="absolute bottom-0 left-0 w-full h-[254px] bg-gradient-to-b z-30 from-[#11192300] to-[#111923] pointer-events-none"></div>
       </div>
       {/* Game Manufacturers Section */}
       <div className="mb-8">
-        <div className="flex justify-end gap-2 mb-4">
-          <div
-            className="bg-gray-700 hover:bg-gray-600 px-2 py-2 rounded-lg transition-colors cursor-pointer"
-            onClick={() => swiperRef.current?.slidePrev()}
-          >
-            <Icon
-              icon="mdi:chevron-left"
-              className="text-white text-[24px] hover:text-[#2A3546]"
-            />
-          </div>
-          <div
-            className="bg-gray-700 hover:bg-gray-600 px-2 py-2 rounded-lg transition-colors cursor-pointer"
-            onClick={() => swiperRef.current?.slideNext()}
-          >
-            <Icon
-              icon="mdi:chevron-right"
-              className="text-white text-[24px] hover:text-[#2A3546]"
-            />
+        <div className="flex items-center justify-between">
+          <h2 className="text-4.5 font-bold text-white mb-4 flex gap-2">
+            Game Manufacturers
+          </h2>
+          <div className="flex justify-end gap-2 mb-4">
+            <div
+              className="bg-gray-700 hover:bg-gray-600 px-2 py-2 rounded-lg transition-colors cursor-pointer"
+              onClick={() => swiperRef.current?.slidePrev()}
+            >
+              <Icon
+                icon="mdi:chevron-left"
+                className="text-white text-[24px] hover:text-[#2A3546]"
+              />
+            </div>
+            <div
+              className="bg-gray-700 hover:bg-gray-600 px-2 py-2 rounded-lg transition-colors cursor-pointer"
+              onClick={() => swiperRef.current?.slideNext()}
+            >
+              <Icon
+                icon="mdi:chevron-right"
+                className="text-white text-[24px] hover:text-[#2A3546]"
+              />
+            </div>
           </div>
         </div>
 
@@ -844,8 +847,10 @@ const MainContent: React.FC = () => {
         </div>
       </div>
       {/* Latest earnings Section */}
-      <div className="mb-8">
-        <h2 className="text-4.5 font-bold text-white mb-4 ">Latest earnings</h2>
+      <div className="mb-8 ">
+        <h2 className="text-4.5 font-bold text-white mb-4 relative top-1">
+          Latest earnings
+        </h2>
         <div className="flex gap-4 overflow-x-auto pb-4">
           <Swiper
             modules={[Autoplay, Pagination]}
@@ -885,30 +890,33 @@ const MainContent: React.FC = () => {
         </div>
       </div>
       {/* MAGIC88 Style Content */}
-      <div className="bg-transparent rounded-lg p-6 text-left mb-6">
-        <h3 className="text-2xl font-bold text-white mb-4">
-          Best crypto casino - Welcome to MAGIC88
-        </h3>
-        <p className="text-gray-300 mb-4 leading-relaxed">
-          Discover the ultimate destination for crypto gaming, where every
-          transaction is transparent, and every game is provably fair. MAGIC88
-          Casino combines cutting-edge technology with a wide array of gaming
-          options to provide a secure and engaging environment for all players.
-        </p>
-        <h4 className="text-lg font-bold text-gray-400 mb-3">
-          Web3 Transaction Hash Games
-        </h4>
-        <p className="text-gray-300 mb-4 leading-relaxed">
-          Experience the thrill of transaction hash games, where every result
-          guarantees fairness and transparency. No account is required, simply
-          send a transaction to the betting address and your winnings are sent
-          back to your wallet. The outcome of every bet can be verified directly
-          on the blockchain.
-        </p>
-
+      <div className="bg-transparent rounded-lg relative p-6 text-left mb-6">
+        <div className="background-linear-to-b from-[#0D131C00] to-[#0D131C]">
+          <h3 className="text-2xl font-bold text-white mb-4">
+            Best crypto casino - Welcome to MAGIC88
+          </h3>
+          <p className="text-gray-300 mb-4 leading-relaxed">
+            Discover the ultimate destination for crypto gaming, where every
+            transaction is transparent, and every game is provably fair. MAGIC88
+            Casino combines cutting-edge technology with a wide array of gaming
+            options to provide a secure and engaging environment for all
+            players.
+          </p>
+          <h4 className="text-lg font-bold text-gray-400 mb-3">
+            Web3 Transaction Hash Games
+          </h4>
+          <p className="text-gray-300 mb-4 leading-relaxed">
+            Experience the thrill of transaction hash games, where every result
+            guarantees fairness and transparency. No account is required, simply
+            send a transaction to the betting address and your winnings are sent
+            back to your wallet. The outcome of every bet can be verified
+            directly on the blockchain.
+          </p>
+        </div>
+        <div className="absolute bottom-0 left-0 w-full h-[254px] bg-gradient-to-b z-30 from-[#11192300] to-[#111923] pointer-events-none"></div>
         {/* Expanded Content */}
         <div
-          className={`overflow-hidden transition-all duration-700 ease-in-out ${
+          className={`overflow-hidden transition-all  duration-700 ease-in-out ${
             isExpanded ? "max-h-[800px] opacity-100" : "max-h-0 opacity-0"
           }`}
         >
@@ -941,42 +949,31 @@ const MainContent: React.FC = () => {
             </p>
           </div>
         </div>
-
-        <div className="text-center">
-          <button
-            onClick={toggleContent}
-            className="bg-gray-700 hover:bg-gray-600 text-white px-6 py-3 rounded-lg transition-colors flex items-center mx-auto"
-            style={{ color: "#A7B5CA", fontWeight: "700" }}
-          >
-            {isExpanded ? "Show Less" : "Show More"}
-            <svg
-              className={`w-4 h-4 ml-2 transition-transform duration-200 ${
-                isExpanded ? "rotate-180" : ""
-              }`}
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M19 9l-7 7-7-7"
-              />
-            </svg>
-          </button>
-        </div>
       </div>
-      {/* Footer Section */}
-      {/* <div className="bg-transparent rounded-lg p-6 text-left">
-        <h3 className="text-xl font-bold text-white mb-2">
-          {footerContent.title}
-        </h3>
-        <p className="text-gray-300 mb-4">{footerContent.description}</p>
-        <button className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg transition-colors">
-          {footerContent.buttonText}
+      <div className="text-center">
+        <button
+          onClick={toggleContent}
+          className="bg-gray-700 hover:bg-gray-600 text-white px-6 py-3 rounded-lg transition-colors flex items-center mx-auto"
+          style={{ color: "#A7B5CA", fontWeight: "700" }}
+        >
+          {isExpanded ? "Show Less" : "Show More"}
+          <svg
+            className={`w-4 h-4 ml-2 transition-transform duration-200 ${
+              isExpanded ? "rotate-180" : ""
+            }`}
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M19 9l-7 7-7-7"
+            />
+          </svg>
         </button>
-      </div> */}
+      </div>
     </div>
   );
 };

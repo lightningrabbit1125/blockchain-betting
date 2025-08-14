@@ -30,7 +30,7 @@ const Header: React.FC = () => {
             </div>
 
             {/* Bonuses button */}
-            <div className="relative">
+            <div className="relative sm:block hidden">
               <button
                 className=" rounded-lg border border-gray-600 flex items-center gap-2 transition-colors"
                 style={{
@@ -56,7 +56,7 @@ const Header: React.FC = () => {
             </div>
 
             {/* Search button */}
-            <BlackButton className="hidden">
+            <BlackButton className="sm:block hidden">
               <img src={"/icons/search.svg"} className="px-2.5" alt="burger" />
             </BlackButton>
           </div>

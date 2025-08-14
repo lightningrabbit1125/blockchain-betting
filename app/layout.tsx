@@ -43,7 +43,7 @@ export default function RootLayout({
         <SidebarProvider>
           {/* <Auth /> */}
           <Header />
-          <main className="flex pt-14 relative">
+          <main className="flex pt-14 relative bg-[#111923]">
             <Sidebar />
             <div className="main-content">
               <MainContent />

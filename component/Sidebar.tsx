@@ -7,7 +7,7 @@ const Sidebar: React.FC = () => {
 
   return (
     <aside
-      className={`sidebar xl:lg:sm:sticky h-14 bg-gray-800 fixed  lg:md:block transition-all duration-300 z-40 overflow-y-auto ${
+      className={`sidebar close xl:lg:sm:sticky h-14 bg-gray-800 fixed  lg:md:sm:block transition-all duration-300 z-40 overflow-y-auto ${
         isCollapsed ? "close" : "open"
       }`}
       style={{
@@ -43,6 +43,7 @@ const Sidebar: React.FC = () => {
               {!isCollapsed && <span className="text-sm">Sport</span>}
             </button>
           </div>
+          <div className=" w-full mx-auto h-[1px] relative bg-[linear-gradient(to_right,#1a2332,#6a7282,#1a2332)] mt-5"></div>
         </div>
 
         {/* Navigation Section */}
@@ -71,9 +72,8 @@ const Sidebar: React.FC = () => {
             <img src={"/icons/history.svg"} className="w-5 h-5" alt="history" />
             {!isCollapsed && <span className="text-sm">Recent</span>}
           </div>
+          <div className=" w-full mx-auto h-[1px] relative bg-[linear-gradient(to_right,#1a2332,#6a7282,#1a2332)]"></div>
         </div>
-
-        <hr className="border-gray-500 mx-4" />
 
         {/* Game Categories */}
         <div className={`p-4 ${isCollapsed ? "px-2" : ""} space-y-1 flex-1`}>
@@ -169,10 +169,8 @@ const Sidebar: React.FC = () => {
               <img src={"/icons/game.svg"} className="w-5 h-5" alt="game" />
               {!isCollapsed && <span className="text-sm">Table Games</span>}
             </div>
+            <div className=" w-full mx-auto h-[1px] relative bg-[linear-gradient(to_right,#1a2332,#6a7282,#1a2332)]"></div>
           </div>
-
-          <hr className="border-gray-500" />
-
           <div className="py-[16px]">
             {/* Membership & Plan */}
             <div
@@ -232,10 +230,8 @@ const Sidebar: React.FC = () => {
               />
               {!isCollapsed && <span className="text-sm">Help center</span>}
             </div>
+            <div className=" w-full mx-auto h-[1px] relative bg-[linear-gradient(to_right,#1a2332,#6a7282,#1a2332)]"></div>
           </div>
-
-          <hr className="border-gray-500" />
-
           <div className="py-[16px]">
             {/* Tutorials */}
             <div
@@ -273,9 +269,7 @@ const Sidebar: React.FC = () => {
               )}
             </div>
           </div>
-
-          <hr className="border-gray-500" />
-
+          <div className=" w-full mx-auto h-[1px] relative bg-[linear-gradient(to_right,#1a2332,#6a7282,#1a2332)]"></div>
           <div className="py-[16px]">
             {/* Service */}
             <div
@@ -291,7 +285,7 @@ const Sidebar: React.FC = () => {
               {!isCollapsed && <span className="text-sm">Online service</span>}
             </div>
           </div>
-          <hr className="border-gray-500 mb-4" />
+          <div className=" w-full mx-auto h-[1px] relative bg-[linear-gradient(to_right,#1a2332,#6a7282,#1a2332)]"></div>
           {isCollapsed && (
             <div className="py-[16px]">
               {/* Service */}
@@ -345,8 +339,7 @@ const Sidebar: React.FC = () => {
               </button>
             </div>
 
-            <hr className="border-gray-500 my-4" />
-
+            <div className=" w-full mx-auto h-[1px] relative bg-[linear-gradient(to_right,#1a2332,#6a7282,#1a2332)]"></div>
             {/* App Download */}
             <div className="flex items-center justify-between">
               <span className="text-white text-sm">Ok777 App</span>
