@@ -4,6 +4,7 @@ import React, { useEffect, useRef, useState } from "react";
 import mainContentData from "../main-content-data.json";
 import { useSidebar } from "./providers/SidebarProvider";
 import { Swiper, SwiperSlide } from "swiper/react";
+import { Swiper as SwiperType } from "swiper";
 import "swiper/css";
 import { Autoplay, Navigation, Pagination } from "swiper/modules";
 
@@ -212,7 +213,7 @@ const MainContent: React.FC = () => {
   const toggleContent = () => {
     setIsExpanded(!isExpanded);
   };
-  const swiperRef = useRef(null);
+  const swiperRef = useRef<SwiperType | null>(null);
 
   return (
     <div
