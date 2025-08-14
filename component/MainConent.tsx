@@ -18,6 +18,8 @@ import FutureCard from "./cards/FutureCard";
 import GameCard from "./cards/GameCard";
 import Button from "./buttons/Button";
 import { Icon } from "@iconify/react";
+import Auth from "./auth/Auth";
+
 const SLIDE_COUNT = 6;
 const SLIDES = Array.from(Array(SLIDE_COUNT).keys());
 

@@ -52,6 +52,7 @@ export default function RootLayout({
             </div>
           </main>
           <Bottombar />
+          <Auth />
         </SidebarProvider>
       </body>
     </html>

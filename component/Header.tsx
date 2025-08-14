@@ -4,9 +4,13 @@ import React from "react";
 import BlackButton from "./buttons/black";
 import Button, { BlueButton } from "./buttons/Button";
 import { useSidebar } from "./providers/SidebarProvider";
+import router from "next/router";
+import Auth from "./auth/Auth";
 const Header: React.FC = () => {
-  const { toggleSidebar } = useSidebar();
-
+  const { toggleSidebar, toggleAuthModal } = useSidebar();
+  const LoginForm = () => {
+    return <Auth />;
+  };
   return (
     <>
       <header className="fixed top-0 left-0 right-0 z-50 bg-gray-800 border-b border-gray-700 h-14 flex flex-col justify-center px-4 py-2.5 mx-auto">
@@ -68,7 +72,7 @@ const Header: React.FC = () => {
           <div className="flex items-center gap-2">
             {/* Login button with notification */}
             <div className="relative">
-              <BlackButton>
+              <BlackButton onClick={toggleAuthModal}>
                 <span className="text-white px-4 font-medium text-xs">
                   Log in
                 </span>
@@ -76,7 +80,7 @@ const Header: React.FC = () => {
             </div>
 
             {/* Register button */}
-            <Button variant="red">
+            <Button variant="red" onClick={toggleAuthModal}>
               <span className="text-[12px]">Register</span>
             </Button>
 
