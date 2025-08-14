@@ -214,10 +214,10 @@ const MainContent: React.FC = () => {
 
   return (
     <div
-      className={`px-6 py-12  w-full bg-[111923] overflow-x-hidden margin auto  ${
+      className={`px-6 py-12 w-full bg-[111923] overflow-x-hidden margin auto  ${
         isCollapsed
-          ? "xl:w-[calc(100vw-80px)]"
-          : "xl:w-[calc(100vw-315px)] 2xl:w-[calc(100vw-315px)]"
+          ? "lg:w-[calc(100vw-80px)] xl:w-[calc(100vw-80px)]"
+          : "xl:w-[calc(100vw-315px)] lg:w-[calc(100vw-315px)]  2xl:w-[calc(100vw-315px)]"
       }`}
       style={{ margin: "auto" }}
     >

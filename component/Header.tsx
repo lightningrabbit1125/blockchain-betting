@@ -2,7 +2,7 @@
 
 import React from "react";
 import BlackButton from "./buttons/black";
-import Button from "./buttons/Button";
+import Button, { BlueButton } from "./buttons/Button";
 import { useSidebar } from "./providers/SidebarProvider";
 const Header: React.FC = () => {
   const { toggleSidebar } = useSidebar();
@@ -93,6 +93,103 @@ const Header: React.FC = () => {
             <BlackButton className="lg:block hidden">
               <img src={"/icons/chat.svg"} className="px-2.5" alt="burger" />
             </BlackButton>
+          </div>
+        </div>
+        <div className="flex items-center justify-between gap-2 hidden">
+          {/* Left side */}
+          <div className="flex items-center gap-2">
+            {/* Menu button with notification */}
+            <div className="relative lg:block hidden">
+              <BlackButton onClick={toggleSidebar}>
+                <img
+                  src={"/icons/arrow-to-right-stroke.svg"}
+                  className="px-2.5"
+                  alt="burger"
+                />
+              </BlackButton>
+            </div>
+
+            {/* 777 Logo Image */}
+            <div className="flex items-center ">
+              <img src="/images/logo.svg" alt="777 Gaming Logo" />
+            </div>
+
+            {/* Bonuses button */}
+            <div className="relative sm:block hidden">
+              <button
+                className=" rounded-lg border border-gray-600 flex items-center gap-2 transition-colors"
+                style={{
+                  background:
+                    "linear-gradient(90deg, #0546A7 0%, #0C9898 100%)",
+                  paddingLeft: "10px",
+                  paddingRight: "16px",
+                }}
+              >
+                <img
+                  src={"/images/awards/Chest-box.svg"}
+                  className="h-8"
+                  alt="burger"
+                />
+                <span className="text-white font-medium text-xs lg:block hidden">
+                  Bonuses
+                </span>
+              </button>
+              {/* Notification badge overlapping the button */}
+              <div className="absolute -top-1 -right-1 bg-green-500 text-white text-xs rounded w-5 flex items-center justify-center">
+                4
+              </div>
+            </div>
+
+            {/* Search button */}
+            <BlackButton className="sm:block hidden">
+              <img src={"/icons/search.svg"} className="px-2.5" alt="burger" />
+            </BlackButton>
+          </div>
+
+          {/* Center - empty space */}
+          <div className="flex-1"></div>
+          <Button variant="red">
+            <span className="text-[12px]">Register</span>
+          </Button>
+          {/* Right side */}
+          <div className="flex items-center gap-2">
+            {/* Language/Flag button */}
+            <BlackButton>
+              <img
+                src={"/icons/flag-icon/cn.svg"}
+                className="px-2.5 h-4"
+                alt="burger"
+              />
+            </BlackButton>
+            <div className="relative">
+              <BlackButton className="lg:block hidden">
+                <img
+                  src={"/icons/notification.svg"}
+                  className="px-2.5"
+                  alt="burger"
+                />
+              </BlackButton>
+              <div className="absolute -top-1 -right-1 bg-green-500 text-white text-xs rounded w-5 flex items-center justify-center">
+                4
+              </div>
+            </div>
+            {/* Chat/Support button */}
+            <BlackButton>
+              <img src={"/icons/chat.svg"} className="px-2.5" alt="burger" />
+            </BlackButton>
+
+            <div className="relative">
+              <BlackButton>
+                <img
+                  src={"/images/frame.png"}
+                  className="w-[35px] h-[30px] px-0.5"
+                  alt="frame"
+                />
+              </BlackButton>
+              <div className="absolute -top-1 -right-1 bg-green-500 text-white text-xs rounded w-5 flex items-center justify-center">
+                4
+              </div>
+            </div>
           </div>
         </div>
       </header>
