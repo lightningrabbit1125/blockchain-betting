@@ -12,7 +12,7 @@ import GameCard from "../molecules/cards/GameCard";
 import { Button } from "../../ui/atoms";
 import { Icon } from "@iconify/react";
 import Auth from "./auth/Auth";
-import { AnnouncementModal } from "./auth/SuccessForm";
+import { SuccessForm } from "./auth/SuccessForm";
 import Profile from "../molecules/notification/Profile";
 import SwiperSlider from "../molecules/slider/SwiperSlider";
 
@@ -406,7 +406,7 @@ const MainContent: React.FC = () => {
       }`}
       style={{ margin: "auto" }}
     >
-      <AnnouncementModal isOpen={isOpen} onClose={toggleSuccessForm} />
+      <SuccessForm isOpen={isOpen} />
       <Profile />
 
       {/* Main Banner Section */}

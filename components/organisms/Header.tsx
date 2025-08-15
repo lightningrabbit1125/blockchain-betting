@@ -5,6 +5,7 @@ import { BlackButton, Button } from "../../ui/atoms";
 import { useSidebar } from "../providers/SidebarProvider";
 import Auth from "./auth/Auth";
 import AuthButton from "../molecules/AuthButton";
+import AuthModal from "../Modal/AuthModal";
 
 // Reusable components to eliminate duplication
 const MenuButton: React.FC<{ onClick: () => void }> = ({ onClick }) => (
@@ -139,7 +140,7 @@ const Header: React.FC = () => {
   const { toggleSidebar, toggleAuthModal } = useSidebar();
 
   const LoginForm = () => {
-    return <Auth />;
+    return <AuthModal />;
   };
 
   const toggleNotification = () => {

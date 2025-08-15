@@ -3,16 +3,19 @@
 import React, { useState } from "react";
 
 import AuthButton from "../../molecules/AuthButton";
-import { Icons } from "../../../ui/atoms";
 
 const LoginForm: React.FC = () => {
   const [showPassword, setShowPassword] = useState(false);
-  const [isOpen, setIsOpen] = useState(false); 
+  const [isOpen, setIsOpen] = useState(true);
   const toggleSuccessForm = () => {
     setIsOpen(!isOpen);
+    const authContainer = document.getElementById("auth-container");
     const successForm = document.getElementById("success-form");
     if (successForm) {
-      successForm.style.display = isOpen ? "block" : "hidden";
+      successForm.style.display = isOpen ? "block" : "none";
+    }
+    if (authContainer) {
+      authContainer.style.display = isOpen ? "none" : "block";
     }
     console.log(successForm?.style.display, isOpen);
 
