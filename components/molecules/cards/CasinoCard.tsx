@@ -1,39 +1,50 @@
 "use client";
 
-// this is card with badge and views
-
 import React from "react";
 
-export interface TypeThreeProps {
+export interface CasinoCardProps {
   badge: string;
   views: string;
   user: string;
   image: string;
 }
 
-const TypeThree: React.FC<TypeThreeProps> = ({ user, badge, image, views }) => {
-  const badgeColor =
-    badge === "HOT"
-      ? "bg-[#ED1D49]"
-      : badge === "NEW"
-      ? "bg-[#1BB83D]"
-      : "bg-[#FFAB00]";
+const CasinoCard: React.FC<CasinoCardProps> = ({
+  user,
+  badge,
+  image,
+  views,
+}) => {
+  const getBadgeColor = (badgeType: string): string => {
+    switch (badgeType) {
+      case "HOT":
+        return "bg-[#ED1D49]";
+      case "NEW":
+        return "bg-[#1BB83D]";
+      default:
+        return "bg-[#FFAB00]";
+    }
+  };
 
   return (
     <div className="overflow-hidden embla__slide w-full">
       <div className="relative">
         <img
           src={image}
-          alt="image"
-          className="w-full object-cover rounded-[8px]"
+          alt={`Casino game ${badge.toLowerCase()}`}
+          className="w-full object-cover rounded-[8px] hover:scale-105 transition-transform duration-300"
           style={{ width: "200px !important" }}
         />
+
         <div className="flex items-center mt-2">
-          <img src={`/icons/${user}.svg`} className="w-4 h-4" alt="user" />
-          <span className="text-white text-[14px]">{views}</span>
+          <img src={`/icons/${user}.svg`} className="w-4 h-4" alt="User icon" />
+          <span className="text-white text-[14px] ml-2">{views}</span>
         </div>
+
         <div
-          className={`absolute top-2 left-2 text-white text-[10px] lg:text-[17.24px] font-bold lg:px-2 px-[4px] rounded-full border border-opacity-[13%] ${badgeColor}`}
+          className={`absolute top-2 left-2 text-white text-[10px] lg:text-[17.24px] font-bold lg:px-2 px-[4px] py-1 rounded-full border border-opacity-[13%] ${getBadgeColor(
+            badge
+          )}`}
         >
           {badge}
         </div>
@@ -42,4 +53,4 @@ const TypeThree: React.FC<TypeThreeProps> = ({ user, badge, image, views }) => {
   );
 };
 
-export default TypeThree;
+export default CasinoCard;

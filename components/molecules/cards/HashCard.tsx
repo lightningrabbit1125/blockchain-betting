@@ -30,7 +30,7 @@ const HashCard: React.FC<TypeTwoProps> = ({
       }}
       className="relative rounded-[14px] w-full h-[173px] p-[8px_10px_12px_10px] text-white overflow-hidden border border-gray-700/50 shadow-xl"
     >
-      <div className="absolute w-full h-full bg-gray-800 opacity-[80%] top-0 left-0" />
+      <div className="absolute w-full h-[173px] bg-gray-800 opacity-[80%] top-0 left-0" />
       <div className="relative z-10">
         <div className="flex justify-between items-center mb-3">
           <div className="flex items-center gap-2">
