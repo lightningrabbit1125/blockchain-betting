@@ -138,6 +138,7 @@ const ProfileButton: React.FC<{ onClick: () => void }> = ({ onClick }) => (
 const Header: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { toggleSidebar, toggleAuthModal } = useSidebar();
+  const [showModal, setShowModal] = useState(true);
 
   const LoginForm = () => {
     return <AuthModal />;

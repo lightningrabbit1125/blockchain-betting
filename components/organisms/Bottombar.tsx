@@ -26,9 +26,13 @@ const Bottombar: React.FC<BottombarProps> = ({
     setActiveTab(tab);
     if (callback) callback();
   };
+  const { isAuthModalOpen } = useSidebar();
 
   return (
-    <div className="fixed lg:hidden bottom-0 left-0 rounded-t-[16px] overflow-hidden right-0 z-50 bg-gray-900 border-t border-gray-700">
+    <>
+      {
+        !isAuthModalOpen && (
+          <div className="fixed lg:hidden bottom-0 left-0 rounded-t-[16px] overflow-hidden right-0 z-50 bg-gray-900 border-t border-gray-700">
       {/* Legal Disclaimer Text */}
 
       {/* Bottom Navigation Bar */}
@@ -131,6 +135,9 @@ const Bottombar: React.FC<BottombarProps> = ({
         </button>
       </div>
     </div>
+        )
+      }
+    </>
   );
 };
 

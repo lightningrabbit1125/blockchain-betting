@@ -61,7 +61,7 @@ const TypeOne: React.FC<TypeOneProps> = ({
         </h1>
         <div>
           <a href={link}>
-            <Button variant="blueOne" className="px-0 h-8.5" >
+            <Button variant="blueOne" className="px-0 h-8.5 rounded-[9.15px]" >
               {button}
             </Button>
           </a>

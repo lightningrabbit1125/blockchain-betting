@@ -15,7 +15,7 @@ import Auth from "./auth/Auth";
 import { SuccessForm } from "./auth/SuccessForm";
 import Profile from "../molecules/notification/Profile";
 import SwiperSlider from "../molecules/slider/SwiperSlider";
-
+import { Autoplay } from "swiper/modules";
 // Extract data from JSON
 const {
   card1,
@@ -226,17 +226,15 @@ const LatestBetsTable: React.FC = () => (
               />
               {bet.player}
             </div>
-            <div className="text-gray-300 text-[12px] hidden md:lg:block font-bold truncate flex items-center">
+            <div className="text-gray-300 text-[12px] hidden md:lg:flex items-center font-bold truncate items-center">
               {bet.time}
             </div>
-            <div className="text-gray-300 text-[12px] hidden md:lg:block font-bold truncate flex items-center gap-2">
-              <div className="rounded-[8px] overflow-hidden w-6 h-6">
-                <img
-                  src="/icons/coin-icon/BTC.svg"
-                  alt="coin"
-                  className="w-full h-full"
-                />
-              </div>
+            <div className="text-gray-300 text-[12px] hidden md:lg:flex font-bold truncate items-center gap-2">
+              <img
+                src="/icons/coin-icon/BTC.svg"
+                alt="coin"
+                className="w-6 h-6"
+              />
               {bet.bet}
             </div>
             <div className="text-[#2283F6] text-[12px] font-bold truncate flex items-center">
@@ -260,7 +258,7 @@ const LatestBetsTable: React.FC = () => (
         autoplayDelay={1000}
         className="h-full"
       />
-      <div className="absolute bottom-0 left-0 w-full h-[254px] bg-gradient-to-b z-30 from-[#11192300] to-[#111923] pointer-events-none"></div>
+      <div className="absolute bottom-0 left-0 w-full h-[254px] bg-gradient-to-b z-30 from-transparent to-[#111923] pointer-events-none"></div>
     </div>
   </>
 );
@@ -399,7 +397,7 @@ const MainContent: React.FC = () => {
 
   return (
     <div
-      className={`px-6 py-12 w-full bg-[111923] overflow-x-hidden margin auto ${
+      className={`px-6 py-12 w-full bg-[#111923] overflow-x-hidden margin auto ${
         isCollapsed
           ? "lg:w-[calc(100vw-80px)] xl:w-[calc(100vw-80px)]"
           : "xl:w-[calc(100vw-315px)] lg:w-[calc(100vw-315px)] 2xl:w-[calc(100vw-315px)]"
@@ -414,13 +412,9 @@ const MainContent: React.FC = () => {
         <SwiperSlider
           data={bannerCards}
           renderSlide={(card, index) => <RewardCard {...card} />}
-          slidesPerView={3.2}
+          slidesPerView="auto"
           spaceBetween={20}
-          breakpoints={{
-            320: { slidesPerView: 1 },
-            640: { slidesPerView: 2 },
-            1440: { slidesPerView: 3.2 },
-          }}
+          slideClassName="lg:!w-[486.76px] !w-[353.35px]"
           showProgressBars={true}
           customPagination={true}
         />
@@ -430,6 +424,7 @@ const MainContent: React.FC = () => {
       <div className="mb-8">
         <SectionHeader icon="/icons/Home.svg" title="New Launches" alt="home" />
         <SwiperSlider
+          autoplayDelay={1000000}
           data={card1}
           renderSlide={(card, index) => <CasinoCard {...card} />}
           slidesPerView={7.4}
@@ -439,7 +434,7 @@ const MainContent: React.FC = () => {
             375: { slidesPerView: 2.1 },
             425: { slidesPerView: 3.4 },
             768: { slidesPerView: 4.3 },
-            1024: { slidesPerView: 5.4, spaceBetween: 20 },
+            1024: { slidesPerView: 5.4 },
             1440: { slidesPerView: 7.4 },
           }}
           showProgressBars={true}
@@ -455,6 +450,7 @@ const MainContent: React.FC = () => {
         />
         <SwiperSlider
           data={card2}
+          autoplayDelay={1000000}
           renderSlide={(card, index) => <CasinoCard {...card} />}
           slidesPerView={7.4}
           spaceBetween={20}
@@ -469,6 +465,7 @@ const MainContent: React.FC = () => {
         />
         <SwiperSlider
           data={card2}
+          autoplayDelay={1000000}
           renderSlide={(card, index) => <CasinoCard {...card} />}
           slidesPerView={7.4}
           spaceBetween={20}
@@ -490,18 +487,13 @@ const MainContent: React.FC = () => {
         <div className="flex gap-4 overflow-x-auto pb-4">
           <SwiperSlider
             data={card9}
+            autoplay={false}
             renderSlide={(card, index) => <HashCard {...card} />}
             spaceBetween={10}
-            breakpoints={{
-              320: { slidesPerView: 1 },
-              375: { slidesPerView: 1.2 },
-              425: { slidesPerView: 1.2 },
-              768: { slidesPerView: 2.6 },
-              1024: { slidesPerView: 3.2 },
-              1440: { slidesPerView: 4.4 },
-            }}
+            slidesPerView="auto"
             showProgressBars={true}
             customPagination={true}
+            slideClassName="!w-[320px]"
           />
         </div>
       </div>
@@ -511,6 +503,7 @@ const MainContent: React.FC = () => {
         <SectionHeader icon="/icons/Slots.svg" title="Slots" alt="slots" />
         <SwiperSlider
           data={card3}
+          autoplayDelay={1000000}
           renderSlide={(card, index) => <CasinoCard {...card} />}
           slidesPerView={7.4}
           spaceBetween={20}
@@ -525,6 +518,7 @@ const MainContent: React.FC = () => {
         />
         <SwiperSlider
           data={card3}
+          autoplayDelay={1000000}
           renderSlide={(card, index) => <CasinoCard {...card} />}
           slidesPerView={7.4}
           spaceBetween={20}
@@ -549,6 +543,7 @@ const MainContent: React.FC = () => {
         <div className="flex gap-4 overflow-x-auto pb-4">
           <SwiperSlider
             data={cryptoCards}
+            autoplayDelay={1000000}
             renderSlide={(card, index) => <FutureCard {...card} />}
             slidesPerView={5.4}
             spaceBetween={20}
@@ -576,6 +571,7 @@ const MainContent: React.FC = () => {
         <div className="flex gap-4 overflow-x-auto pb-4">
           <SwiperSlider
             data={card4}
+            autoplayDelay={1000000}
             renderSlide={(card, index) => <CasinoCard {...card} />}
             slidesPerView={7.4}
             spaceBetween={20}
@@ -599,6 +595,7 @@ const MainContent: React.FC = () => {
         <div className="flex gap-4 overflow-x-auto pb-4">
           <SwiperSlider
             data={card5}
+            autoplayDelay={1000000}
             renderSlide={(card, index) => <CasinoCard {...card} />}
             slidesPerView={7.4}
             spaceBetween={20}
@@ -626,6 +623,7 @@ const MainContent: React.FC = () => {
         <div className="flex gap-4 overflow-x-auto pb-4">
           <SwiperSlider
             data={card6}
+            autoplayDelay={1000000}
             renderSlide={(card, index) => <CasinoCard {...card} />}
             slidesPerView={7.4}
             spaceBetween={20}
@@ -657,6 +655,7 @@ const MainContent: React.FC = () => {
         <div className="flex gap-4 overflow-x-auto pb-4">
           <SwiperSlider
             data={card7}
+            autoplayDelay={1000000}
             renderSlide={(card, index) => <CasinoCard {...card} />}
             slidesPerView={7.4}
             spaceBetween={20}

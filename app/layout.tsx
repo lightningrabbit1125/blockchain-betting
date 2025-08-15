@@ -8,6 +8,7 @@ import Sidebar from "@/components/organisms/Sidebar";
 import Auth from "@/components/organisms/auth/Auth";
 import MainContent from "@/components/organisms/MainContent";
 import Bottombar from "@/components/organisms/Bottombar";
+import AuthModal from "@/components/Modal/AuthModal";
 
 const montserrat = Montserrat({
   subsets: ["latin"], // Specify the character subsets you need
@@ -31,16 +32,16 @@ export default function RootLayout({
         <SidebarProvider>
           {/* <Auth /> */}
           <Header />
-          <main className="flex pt-14 relative bg-[#111923]">
+          <main className="flex pt-14 relative ">
             <Sidebar />
-            <div className="main-content">
+            <div className="main-content ">
               <MainContent />
               {children}
               <Footer />
             </div>
           </main>
           <Bottombar />
-          <Auth />
+          <AuthModal />
         </SidebarProvider>
       </body>
     </html>

@@ -11,10 +11,11 @@ import "swiper/css/pagination";
 interface SwiperSliderProps {
   // Data to render
   data: readonly any[] | any[];
+  modules?: string;
   // Component to render for each slide
   renderSlide: (item: any, index: number) => React.ReactNode;
   // Swiper configuration
-  slidesPerView?: number;
+  slidesPerView?: number | "auto";
   spaceBetween?: number;
   autoplayDelay?: number;
   loop?: boolean;
@@ -41,6 +42,8 @@ interface SwiperSliderProps {
   // Callbacks
   onSlideChange?: (swiper: SwiperType) => void;
   onSwiper?: (swiper: SwiperType) => void;
+  autoplay?: boolean;
+  freeMode?: boolean;
 }
 
 const SwiperSlider: React.FC<SwiperSliderProps> = ({
@@ -62,21 +65,24 @@ const SwiperSlider: React.FC<SwiperSliderProps> = ({
   navigationRef,
   onSlideChange,
   onSwiper,
+  autoplay = true,
+  freeMode = false,
+  modules = "autoplay",
 }) => {
   const progressRefs = useRef<HTMLSpanElement[]>([]);
   const swiperRef = useRef<SwiperType | null>(null);
 
   // Default breakpoints if none provided
-  const defaultBreakpoints = {
-    320: { slidesPerView: 1.5 },
-    375: { slidesPerView: 2.1 },
-    425: { slidesPerView: 3.4 },
-    768: { slidesPerView: 4.3 },
-    1024: { slidesPerView: 5.4, spaceBetween: 20 },
-    1440: { slidesPerView: slidesPerView },
-  };
+  // const defaultBreakpoints = {
+  //   320: { slidesPerView: 1.5 },
+  //   375: { slidesPerView: 2.1 },
+  //   425: { slidesPerView: 3.4 },
+  //   768: { slidesPerView: 4.3 },
+  //   1024: { slidesPerView: 5.4, spaceBetween: 20 },
+  //   1440: { slidesPerView: slidesPerView },
+  // };
 
-  const finalBreakpoints = breakpoints || defaultBreakpoints;
+  const finalBreakpoints = breakpoints || {};
 
   // Handle swiper initialization
   const handleSwiper = (swiper: SwiperType) => {

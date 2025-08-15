@@ -20,7 +20,7 @@ const FutureCard: React.FC<TypeFourProps> = ({
   isPositive,
 }) => {
   return (
-    <div className="bg-gray-800 rounded-lg p-4 border border-gray-700 hover:border-gray-600 transition-all duration-200">
+    <div className="bg-gray-800 rounded-lg p-4 border-t border-[rgba(255,255,255,0.04)] ">
       <div className="flex items-center space-x-3 mb-3">
         <img
           src={`/icons/coin-icon/${symbol}.svg`}

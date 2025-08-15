@@ -56,6 +56,14 @@ body {
   overflow: hidden;
 }
 
+@media (max-width: 768px) {
+  .auth-modal {
+    flex-direction: column;
+  }
+
+  
+}
+
 .auth-back {
   position: fixed;
   top: 0px;
@@ -112,6 +120,12 @@ body {
   flex-direction: column;
   justify-content: flex-end;
   align-items: center;
+}
+
+@media (max-width: 768px) {
+  .auth-modal-content-content {
+    display: none;
+  }
 }
 
 .auth-modal-content-content .auth-modal-content-content-title {
