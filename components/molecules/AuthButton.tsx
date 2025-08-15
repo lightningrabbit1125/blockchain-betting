@@ -12,7 +12,7 @@ interface AuthButtonProps {
 const AuthButton: React.FC<AuthButtonProps> = ({
   type,
   onClick,
-  className = "",
+  className = "w-full h-[40px] ",
 }) => {
   const buttonInfo = {
     login: "LOG IN",
@@ -20,7 +20,7 @@ const AuthButton: React.FC<AuthButtonProps> = ({
   };
 
   return (
-    <Button variant="blue" onClick={onClick} className={className}>
+    <Button variant="red" onClick={onClick} className={className}>
       {buttonInfo[type]}
     </Button>
   );

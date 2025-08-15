@@ -7,7 +7,16 @@ import { Icons } from "../../../ui/atoms";
 
 const LoginForm: React.FC = () => {
   const [showPassword, setShowPassword] = useState(false);
+  const [isOpen, setIsOpen] = useState(false); 
+  const toggleSuccessForm = () => {
+    setIsOpen(!isOpen);
+    const successForm = document.getElementById("success-form");
+    if (successForm) {
+      successForm.style.display = isOpen ? "block" : "hidden";
+    }
+    console.log(successForm?.style.display, isOpen);
 
+  };
   return (
     <div className="login-form">
       <div className="input-group">
@@ -56,7 +65,7 @@ const LoginForm: React.FC = () => {
       <div className="forget-password-form">
         <a href="#">Forget the password</a>
       </div>
-      <AuthButton type="login" />
+      <AuthButton type="login" onClick={toggleSuccessForm}/>
     </div>
   );
 };

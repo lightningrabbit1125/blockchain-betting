@@ -3,7 +3,7 @@
 import React from "react";
 import clsx from "clsx";
 
-type ButtonVariant = "blue" | "black" | "red" | "green" | "blueOne";
+type ButtonVariant = "blue" | "black" | "red" | "green" | "blueOne" | "Wallet";
 
 interface ButtonProps {
   children: React.ReactNode;
@@ -40,6 +40,11 @@ const styles: Record<
     base: "bg-[linear-gradient(#0C60FF,#2C9FFA)] border border-[#55657E]",
     edge: "bg-[#003a8a]",
     width: "w-[173px]",
+  },
+  Wallet: {
+    base: "bg-[linear-gradient(1turn,#31FF5E_0.8%,#1BB83D)]",
+    edge: "bg-[#1BB83D80]",
+    width: "w-[146px]",
   },
 };
 

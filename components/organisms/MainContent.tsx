@@ -20,6 +20,8 @@ import GameCard from "../molecules/cards/GameCard";
 import { Button } from "../../ui/atoms";
 import { Icon } from "@iconify/react";
 import Auth from "./auth/Auth";
+import { AnnouncementModal } from "./auth/SuccessForm";
+import Profile from "../molecules/notification/Profile";
 
 const SLIDE_COUNT = 6;
 const SLIDES = Array.from(Array(SLIDE_COUNT).keys());
@@ -184,6 +186,7 @@ const MainContent: React.FC = () => {
   const progressRefs = useRef<HTMLSpanElement[]>([]);
   const autoplayDelay = 3000; // ms
   const [isExpanded, setIsExpanded] = useState(false);
+  const [showSuccessForm, setShowSuccessForm] = useState(true);
 
   const updateProgressBars = (activeIndex: number) => {
     progressRefs.current.forEach((bar, idx) => {
@@ -214,7 +217,14 @@ const MainContent: React.FC = () => {
     setIsExpanded(!isExpanded);
   };
   const swiperRef = useRef<SwiperType | null>(null);
-
+  const [isOpen, setIsOpen] = useState(false);
+  const toggleSuccessForm = () => {
+    setIsOpen(!isOpen);
+    let successForm = document.getElementById("success-form");
+    if (successForm) {
+      successForm.style.display = isOpen ? "block" : "none";
+    }
+  };
   return (
     <div
       className={`px-6 py-12 w-full bg-[111923] overflow-x-hidden margin auto  ${
@@ -224,6 +234,8 @@ const MainContent: React.FC = () => {
       }`}
       style={{ margin: "auto" }}
     >
+      <AnnouncementModal isOpen={isOpen} onClose={toggleSuccessForm} />
+      <Profile />
       <div className="mb-12">
         <Swiper
           modules={[Autoplay, Pagination]}

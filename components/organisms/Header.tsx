@@ -1,18 +1,28 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import { BlackButton, Button } from "../../ui/atoms";
 import { useSidebar } from "../providers/SidebarProvider";
 import Auth from "./auth/Auth";
+import AuthButton from "../molecules/AuthButton";
 const Header: React.FC = () => {
+  const [isOpen, setIsOpen] = useState(false);
   const { toggleSidebar, toggleAuthModal } = useSidebar();
   const LoginForm = () => {
     return <Auth />;
   };
+  const toggleNotification = () => {
+    console.log(isOpen);
+    setIsOpen(!isOpen);
+    const notificationPanel = document.getElementById("notification-panel");
+    if (notificationPanel) {
+      notificationPanel.style.display = isOpen ? "block" : "none";
+    }
+  };
   return (
     <>
       <header className="fixed top-0 left-0 right-0 z-50 bg-gray-800 border-b border-gray-700 h-14 flex flex-col justify-center px-4 py-2.5 mx-auto">
-        <div className="flex items-center justify-between gap-2">
+        <div className="flex items-center justify-between gap-2 ">
           {/* Left side */}
           <div className="flex items-center gap-2">
             {/* Menu button with notification */}
@@ -150,9 +160,19 @@ const Header: React.FC = () => {
 
           {/* Center - empty space */}
           <div className="flex-1"></div>
-          <Button variant="red">
-            <span className="text-[12px]">Register</span>
-          </Button>
+          <div className="flex items-center gap-2 bg-gray-700 pl-2 rounded-lg">
+            <div className="flex items-center gap-2">
+              <img
+                src="/icons/coin-icon/USDT.svg"
+                alt="notification"
+                className="w-6 h-6"
+              />
+              <p className="text-white text-[14px] font-bold">0.15</p>
+            </div>
+            <Button variant="Wallet">
+              <p>Wallet</p>
+            </Button>
+          </div>
           {/* Right side */}
           <div className="flex items-center gap-2">
             {/* Language/Flag button */}
@@ -181,7 +201,7 @@ const Header: React.FC = () => {
             </BlackButton>
 
             <div className="relative">
-              <BlackButton>
+              <BlackButton onClick={toggleNotification}>
                 <img
                   src={"/images/frame.png"}
                   className="w-[35px] h-[30px] px-0.5"
@@ -193,7 +213,7 @@ const Header: React.FC = () => {
               </div>
             </div>
           </div>
-        </div>
+        </div> 
       </header>
     </>
   );

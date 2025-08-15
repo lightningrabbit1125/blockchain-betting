@@ -602,3 +602,48 @@ body {
     display: none !important;
   }
 }
+
+/* SuccessForm Announcement Modal Styles */
+.success-form-modal {
+  animation: fadeIn 0.3s ease-out;
+}
+
+.success-form-modal .modal-content {
+  animation: slideUp 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.success-form-pagination-dot {
+  transition: all 0.2s ease;
+}
+
+.success-form-pagination-dot:hover {
+  transform: scale(1.2);
+}
+
+.success-form-pagination-dot.active {
+  box-shadow: 0 0 8px rgba(239, 68, 68, 0.6);
+}
+
+.font-montserrat {
+  font-family: "Montserrat", sans-serif;
+}
