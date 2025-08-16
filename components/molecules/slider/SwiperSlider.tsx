@@ -7,39 +7,25 @@ import { Autoplay, Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
 
-// Types for the component
+// Types
 interface SwiperSliderProps {
-  // Data to render
   data: readonly any[] | any[];
-  modules?: string;
-  // Component to render for each slide
   renderSlide: (item: any, index: number) => React.ReactNode;
-  // Swiper configuration
   slidesPerView?: number | "auto";
   spaceBetween?: number;
   autoplayDelay?: number;
   loop?: boolean;
   centeredSlides?: boolean;
   direction?: "horizontal" | "vertical";
-  // Breakpoints configuration
   breakpoints?: {
-    [key: number]: {
-      slidesPerView: number;
-      spaceBetween?: number;
-    };
+    [key: number]: { slidesPerView: number; spaceBetween?: number };
   };
-  // Custom classes
   className?: string;
   slideClassName?: string;
-  // Progress bar functionality
   showProgressBars?: boolean;
-  onProgressBarsUpdate?: (swiper: SwiperType) => void;
-  // Custom pagination
   customPagination?: boolean;
   paginationRenderBullet?: (index: number, className: string) => string;
-  // Navigation ref (for external control)
   navigationRef?: React.MutableRefObject<SwiperType | null>;
-  // Callbacks
   onSlideChange?: (swiper: SwiperType) => void;
   onSwiper?: (swiper: SwiperType) => void;
   autoplay?: boolean;
@@ -59,68 +45,67 @@ const SwiperSlider: React.FC<SwiperSliderProps> = ({
   className = "",
   slideClassName = "",
   showProgressBars = false,
-  onProgressBarsUpdate,
   customPagination = false,
   paginationRenderBullet,
   navigationRef,
   onSlideChange,
   onSwiper,
-  autoplay = true,
-  freeMode = false,
-  modules = "autoplay",
 }) => {
-  const progressRefs = useRef<HTMLSpanElement[]>([]);
   const swiperRef = useRef<SwiperType | null>(null);
+  const progressRefs = useRef<HTMLDivElement[]>([]);
 
-  // Default breakpoints if none provided
-  // const defaultBreakpoints = {
-  //   320: { slidesPerView: 1.5 },
-  //   375: { slidesPerView: 2.1 },
-  //   425: { slidesPerView: 3.4 },
-  //   768: { slidesPerView: 4.3 },
-  //   1024: { slidesPerView: 5.4, spaceBetween: 20 },
-  //   1440: { slidesPerView: slidesPerView },
-  // };
+  // Update bullet progress
+  const updateProgress = (swiper: SwiperType) => {
+    const activeIndex = swiper.realIndex ?? swiper.activeIndex;
+    progressRefs.current.forEach((bar, index) => {
+      if (index < activeIndex) {
+        bar.style.width = "100%"; // past slides full blue
+      } else if (index === activeIndex) {
+        bar.style.transition = `width ${autoplayDelay}ms linear`;
+        bar.style.width = "100%"; // animate current
+      } else {
+        bar.style.transition = "none";
+        bar.style.width = "0%"; // future slides empty
+      }
+    });
+  };
 
-  const finalBreakpoints = breakpoints || {};
-
-  // Handle swiper initialization
+  // Swiper initialization
   const handleSwiper = (swiper: SwiperType) => {
     swiperRef.current = swiper;
-    if (navigationRef) {
-      navigationRef.current = swiper;
-    }
+    if (navigationRef) navigationRef.current = swiper;
 
-    if (showProgressBars) {
-      setTimeout(() => {
-        progressRefs.current = Array.from(
-          swiper.pagination.el.querySelectorAll<HTMLSpanElement>(
-            ".progress-bar"
-          )
-        );
-        if (onProgressBarsUpdate) {
-          onProgressBarsUpdate(swiper);
-        }
-      }, 0);
-    }
+    if (showProgressBars) updateProgress(swiper);
 
-    if (onSwiper) {
-      onSwiper(swiper);
-    }
+    if (onSwiper) onSwiper(swiper);
   };
 
-  // Handle slide change
+  // Slide change
   const handleSlideChange = (swiper: SwiperType) => {
-    if (onSlideChange) {
-      onSlideChange(swiper);
-    }
+    if (showProgressBars) updateProgress(swiper);
+    if (onSlideChange) onSlideChange(swiper);
   };
 
-  // Default pagination render bullet for progress bars
-  const defaultPaginationRenderBullet = (index: number, className: string) =>
-    `<span class="${className} relative w-8 h-1.5 bg-gray-300 rounded overflow-hidden">
-       <span class="progress-bar absolute opacity-100 left-0 top-0 h-full w-0 bg-gradient-to-r from-blue-500 to-blue-600"></span>
-     </span>`;
+  // Default pagination render bullet
+  const defaultPaginationRenderBullet = (index: number, className: string) => {
+    return `
+      <span class="${className} relative w-8 h-1.5 bg-gray-300 rounded overflow-hidden">
+        <span class="progress-bar absolute left-0 top-0 h-full w-0 bg-blue-500"></span>
+      </span>
+    `;
+  };
+
+  // Attach progress refs after mount
+  useEffect(() => {
+    if (!customPagination || !swiperRef.current) return;
+
+    const bullets =
+      swiperRef.current.pagination.el.querySelectorAll<HTMLSpanElement>(
+        ".swiper-pagination-bullet .progress-bar"
+      );
+    progressRefs.current = Array.from(bullets) as HTMLDivElement[];
+    updateProgress(swiperRef.current);
+  }, [data, customPagination]);
 
   return (
     <Swiper
@@ -130,11 +115,8 @@ const SwiperSlider: React.FC<SwiperSliderProps> = ({
       spaceBetween={spaceBetween}
       loop={loop}
       centeredSlides={centeredSlides}
-      autoplay={{
-        delay: autoplayDelay,
-        disableOnInteraction: false,
-      }}
-      breakpoints={finalBreakpoints}
+      autoplay={{ delay: autoplayDelay, disableOnInteraction: false }}
+      breakpoints={breakpoints}
       pagination={
         customPagination
           ? {

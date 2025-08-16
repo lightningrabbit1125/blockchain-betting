@@ -60,8 +60,6 @@ body {
   .auth-modal {
     flex-direction: column;
   }
-
-  
 }
 
 .auth-back {
@@ -577,6 +575,26 @@ body {
   bottom: var(--swiper-pagination-bottom, -6px) !important;
   z-index: 9999 !important;
   position: relative !important;
+}
+
+.swiper-pagination-bullet-active::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: var(--fill, 0%);
+  background-color: #3b82f6;
+  animation: fillBullet var(--swiper-delay, 3s) linear forwards;
+}
+
+@keyframes fillBullet {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 100%;
+  }
 }
 
 /* Basic styling */
